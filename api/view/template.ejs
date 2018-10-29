@@ -1,0 +1,7 @@
+<% if (locals.data.template=='post') {%>
+  <%- include('post',{data: locals.data});%>
+<%  }else if(locals.data.template=='list'){%>
+  <%- include('list',{data: locals.data});%>
+<% }else{%>
+  error
+<%} %>

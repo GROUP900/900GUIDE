@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8" />
+	<title>
+		<%=locals.data.title%> - 900指南
+	</title>
+	<meta name="description" content="<%=locals.data.excerpt%>">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+	<meta name="renderer" content="webkit">
+	<link rel=apple-touch-icon sizes=60x60 href=http://files.nine00.com/favicon/apple-icon-60x60.png>
+	<link rel=apple-touch-icon sizes=76x76 href=http://files.nine00.com/favicon/apple-icon-76x76.png>
+	<link rel=apple-touch-icon sizes=120x120 href=http://files.nine00.com/favicon/apple-icon-120x120.png>
+	<link rel=apple-touch-icon sizes=152x152 href=http://files.nine00.com/favicon/apple-icon-152x152.png>
+	<link rel="shortcut icon" href=http://files.nine00.com/favicon/favicon.ico type=image/x-icon>
+	<link rel="stylesheet" type="text/css" href="https://static.nine00.com/render/magic.css?v=17613" />
+</head>
+
+<body>
+	<main>
+		<div class="hp"><img alt="<%=locals.data.title%>" title="<%=locals.data.title%>" src="<%=locals.data.hpurl%>"></div>
+		<div class="author"><img src="<%=locals.data.avatar%>">
+			<%=locals.data.author%>
+		</div>
+		<article>
+			<hgroup>
+				<h1><%=locals.data.title%></h1>
+				<h2 class="excerpt"><%=locals.data.excerpt%></h2>
+			</hgroup>
+			<div class="content">
+				<%-locals.data.content%>
+			</div>
+			<div class="note">
+				<p>
+					<%=locals.data.author%> 投稿于
+						<%=locals.data.date%>
+				</p>
+			</div>
+		</article>
+		<div class="comments">
+			<% locals.data.comments.forEach(function(comment){ %>
+				<div>
+					<a href="<%=comment.url%>"><img src="<%=comment.avatarUrl%>"></a>
+					<p>
+						<% if (comment.type!='reg') { %>
+							<span class="type">匿名</span>
+							<% } %>
+								<span class="name"><%=comment.author%></span> <span class="time"><%=comment.disptime%></span>
+								<%=comment.content%>
+					</p>
+				</div>
+				<% }); %>
+		</div>
+		<div class="fullbtn">
+			<a href="<%=locals.data.origin%>">添加评论</a>
+		</div>
+	</main>
+	<div class="side">
+
+		<div>
+			<a href="https://www.nine00.com">
+				<div class="icon900"></div>
+			</a>
+			<a target="_blank" href="<%=locals.data.wblink%>">
+				<div class="wb"></div>
+			</a>
+			<img class="qr" src="<%=locals.data.qrlink%>">
+		</div>
+
+	</div>
+	<div class="hint">
+		<span>文章来自900指南。这是一个用来索引的快速预览页，如需评论或投稿等功能请打开
+			<a href="<%=locals.data.origin%>">完整版</a></span>
+	</div>
+</body>
+
+</html>
